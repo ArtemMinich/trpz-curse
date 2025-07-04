@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8080';
+const API_BASE_URL = 'http://localhost:8080/api';
 
 class API {
     constructor() {
@@ -26,9 +26,9 @@ class API {
         
         if (!response.ok) {
             const error = await response.json().catch(() => ({ message: 'Network error' }));
+            console.log(response);
             throw new Error(error.message || 'Request failed');
         }
-
         return response.json();
     }
 
@@ -75,16 +75,16 @@ class API {
     // Opportunities API
     async getOpportunities(params = {}) {
         const queryString = new URLSearchParams(params).toString();
-        const url = queryString ? `/opportunities?${queryString}` : '/opportunities';
+        const url = queryString ? `/opportunities?${queryString}/` : '/opportunities/';
         return this.request(url);
     }
 
     async getOpportunityById(id) {
-        return this.request(`/opportunities/${id}`);
+        return this.request(`/opportunities/${id}/`);
     }
 
     async triggerParsing() {
-        return this.request('/opportunities/parse', {
+        return this.request('/opportunities/parse/', {
             method: 'POST'
         });
     }

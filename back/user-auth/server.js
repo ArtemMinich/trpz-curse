@@ -1,6 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
 const connectDB = require('./config/database');
 const authRoutes = require('./routes/auth');
 
@@ -10,9 +9,8 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
 app.use(express.json());
-app.use('/uploads', express.static('uploads'));
+app.use('/auth/uploads', express.static('uploads'));
 
 // Маршрути
 app.use(authRoutes);

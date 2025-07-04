@@ -59,12 +59,12 @@ function renderOpportunities() {
         project: 'Проекти'
     };
 
-    grid.innerHTML = opportunities.map(opportunity => `
+    grid.innerHTML = opportunities.data.map(opportunity => `
         <div class="opportunity-card">
             <h3>${escapeHtml(opportunity.title)}</h3>
             <p><strong>Тип:</strong> ${typeLabels[opportunity.type] || opportunity.type}</p>
             <p><strong>Регіон:</strong> ${escapeHtml(opportunity.region)}</p>
-            <div class="description">${escapeHtml(opportunity.description)}</div>
+           
             ${opportunity.tags && opportunity.tags.length > 0 ? `
                 <div class="opportunity-tags">
                     ${opportunity.tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}

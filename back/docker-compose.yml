@@ -39,8 +39,10 @@ services:
     ports:
       - "3003:4000"
     environment:
-      PORT: 4000
+      PORT: ${ROADMAP_PORT}
       MONGODB_URI: mongodb://mongo:${DB_PORT}/roadmap
+      USER_AUTH_URL: http://user-auth:5000/auth
+      OPPORTUNITIES_URL: http://opportunities:3000/opportunities
     depends_on:
       - mongo
       - opportunities

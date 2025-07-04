@@ -17,12 +17,14 @@ class RoadmapService {
 
   async generateInitialRoadmap(userId) {
     try {
+      const USER_AUTH_URL = process.env.USER_AUTH_URL;
+      const OPPORTUNITIES_URL = process.env.OPPORTUNITIES_URL;
       // Get user profile from auth service
-      const userResponse = await axios.get(`http://user-auth:3001/api/users/${userId}`);
+      const userResponse = await axios.get(`${USER_AUTH_URL}/users/${userId}`);
       const user = userResponse.data;
 
       // Get opportunities from opportunities service
-      const opportunitiesResponse = await axios.get('http://opportunities:3002/api/opportunities');
+      const opportunitiesResponse = await axios.get(`${OPPORTUNITIES_URL}/`);
       const opportunities = opportunitiesResponse.data;
 
       // Generate roadmap steps based on user interests and available opportunities
