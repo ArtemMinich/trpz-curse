@@ -37,7 +37,7 @@ mongoose.connect(mongoURI, {
   })
   .catch(err => console.error('Could not connect to MongoDB', err));
 
-app.use('/opportunities', opportunitiesRoutes);
+app.use(opportunitiesRoutes);
 
 cron.schedule(process.env.CRON_SCHEDULE || '0 */6 * * *', async () => {
   console.log('Running opportunities parsing job...');

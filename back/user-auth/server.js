@@ -15,7 +15,7 @@ app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
 // Маршрути
-app.use('/api/auth', authRoutes);
+app.use(authRoutes);
 
 // Базовий маршрут
 app.get('/', (req, res) => {
