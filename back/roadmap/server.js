@@ -13,7 +13,7 @@ const roadmapRoutes = require('./src/routes/roadmapRoutes');
 app.use('/api/roadmap', roadmapRoutes);
 
 // Connect to MongoDB
-mongoose.connect('mongodb://mongodb:27017/trpz', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
