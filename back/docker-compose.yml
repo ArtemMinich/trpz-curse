@@ -41,6 +41,7 @@ services:
     environment:
       PORT: 4000
       MONGODB_URI: mongodb://mongo:${DB_PORT}/roadmap
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
     depends_on:
       - mongo
       - opportunities
