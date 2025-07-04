@@ -71,6 +71,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     userData.interests = interests;
 
     const errorDiv = document.getElementById('registerError');
+    console.log('Registration data:', userData);
 
     try {
         const response = await api.register(userData);
@@ -79,7 +80,12 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         showPage('opportunities');
         errorDiv.classList.remove('show');
     } catch (error) {
-        errorDiv.textContent = error.message;
+        console.error('Registration error:', error);
+        let errorMessage = error.message;
+        if (error.message.includes('errors')) {
+            errorMessage = 'Перевірте правильність заповнення всіх полів';
+        }
+        errorDiv.textContent = errorMessage;
         errorDiv.classList.add('show');
     }
 });

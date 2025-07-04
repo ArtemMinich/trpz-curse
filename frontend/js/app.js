@@ -17,6 +17,8 @@ function showPage(pageName) {
         loadOpportunities();
     } else if (pageName === 'profile') {
         loadProfileData();
+    } else if (pageName === 'roadmap') {
+        // Roadmap page loaded, no initial data needed
     }
 }
 

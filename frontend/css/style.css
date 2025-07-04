@@ -329,6 +329,117 @@ main {
     display: none !important;
 }
 
+.roadmap-form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.roadmap-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.roadmap-placeholder {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+.roadmap-timeline {
+    position: relative;
+}
+
+.roadmap-timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #007bff;
+}
+
+.roadmap-step {
+    display: flex;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.step-content {
+    margin-left: 20px;
+    flex: 1;
+}
+
+.step-content h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.step-content p {
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.step-duration {
+    color: #007bff;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.step-resources {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    border-left: 4px solid #007bff;
+}
+
+.step-resources h4 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.step-resources ul {
+    list-style: none;
+    padding: 0;
+}
+
+.step-resources li {
+    margin-bottom: 5px;
+}
+
+.step-resources a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.step-resources a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -353,5 +464,23 @@ main {
     
     .checkbox-group {
         grid-template-columns: 1fr;
+    }
+    
+    .roadmap-form {
+        grid-template-columns: 1fr;
+    }
+    
+    .roadmap-timeline::before {
+        left: 15px;
+    }
+    
+    .step-number {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+    
+    .step-content {
+        margin-left: 15px;
     }
 }

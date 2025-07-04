@@ -26,8 +26,8 @@ class API {
         
         if (!response.ok) {
             const error = await response.json().catch(() => ({ message: 'Network error' }));
-            console.log(response);
-            throw new Error(error.message || 'Request failed');
+            console.error('API Error:', { status: response.status, error, url });
+            throw new Error(error.message || error.errors?.[0]?.msg || 'Request failed');
         }
         return response.json();
     }

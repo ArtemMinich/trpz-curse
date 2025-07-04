@@ -49,7 +49,19 @@ cron.schedule(process.env.CRON_SCHEDULE || '0 */6 * * *', async () => {
   }
 });
 
-const HOST = process.env.HOST || '0.0.0.0';
-app.listen(PORT, HOST, () => {
-  console.log(`Server is running on ${HOST}:${PORT}`);
+const server = app.listen(PORT, () => {});
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+  server.close(() => {
+    mongoose.connection.close();
+    process.exit(0);
+  });
+});
+
+process.on('SIGINT', () => {
+  server.close(() => {
+    mongoose.connection.close();
+    process.exit(0);
+  });
 });
