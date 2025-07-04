@@ -34,6 +34,22 @@ services:
       - /app/node_modules
     restart: unless-stopped
 
+  roadmap:
+    build: ./roadmap
+    ports:
+      - "3003:4000"
+    environment:
+      PORT: 4000
+      MONGODB_URI: mongodb://mongo:${DB_PORT}/roadmap
+    depends_on:
+      - mongo
+      - opportunities
+      - user-auth
+    volumes:
+      - ./roadmap:/app
+      - /app/node_modules
+    restart: unless-stopped
+
   mongo:
     image: mongo:7.0
     ports:
