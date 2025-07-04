@@ -43,7 +43,9 @@ services:
       MONGODB_URI: mongodb://mongo:${DB_PORT}/roadmap
       USER_AUTH_URL: http://user-auth:5000/auth
       OPPORTUNITIES_URL: http://opportunities:3000/opportunities
-      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      OPENROUTER_API_KEY: ${ROADMAP_OPENROUTER_API_KEY}
+      SITE_URL: ${ROADMAP_SITE_URL}
+      SITE_NAME: ${ROADMAP_SITE_NAME}
     depends_on:
       - mongo
       - opportunities
